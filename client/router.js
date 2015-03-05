@@ -3,5 +3,8 @@ Router.route('/', {
 , waitOn: function () {
     return Meteor.subscribe('allObjects')
   }
-, action: function () {}
+, action: function () {
+    var self = this
+    self.render('pageTimesheet')
+  }
 })

@@ -1,0 +1,13 @@
+<template name="blockListObjects">
+  <table>
+    <tbody>
+      {{ #each objects }}
+        <tr>
+          <td>{{ name }}</td>
+          <td>{{ objectType }}</td>
+          <td>{{ serialNo }}</td>
+        </tr>
+      {{ /each }}
+    </tbody>
+  </table>
+</template>
