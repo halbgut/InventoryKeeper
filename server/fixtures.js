@@ -1,3 +1,6 @@
+var currentDate = new Date()
+, currentTimeStamp = currentDate.value
+
 if(Objects.find({}).count() < 1) {
   Objects.insert({
     name: 'JVC Camera'
