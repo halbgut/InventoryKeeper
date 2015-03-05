@@ -8,3 +8,4 @@ meteor-platform
 aldeed:autoform
 aldeed:collection2
 iron:router
+accounts-password
