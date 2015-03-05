@@ -45,10 +45,46 @@ Router.route('/objects/:_id/update', {
   }
 , action: function () {
     var self = this
-    console.log(Objects.findOne({_id: this.params._id}))
     self.render('blockObjectsUpdate', {data: {
           doc: Objects.findOne({_id: this.params._id})
         }})
+  }
+})
+
+Router.route('/bookings/new', {
+  name: 'bookings.new'
+, onBeforeAction: function () {
+    var self = this
+    if(!Meteor.userId()) {
+      self.render('blockNotAllowed')
+    } else {
+      self.next()
+    }
+  }
+, action: function () {
+    var self = this
+    self.render('blockBookingsNew')
+  }
+})
+
+Router.route('/bookings/:_id/update', {
+  name: 'bookings.update'
+, waitOn: function () {
+    return Meteor.subscribe('allBookings')
+  }
+, onBeforeAction: function () {
+    var self = this
+    if(!Meteor.userId()) {
+      self.render('blockNotAllowed')
+    } else {
+      self.next()
+    }
+  }
+, action: function () {
+    var self = this
+    self.render('blockBookingsUpdate', {data: {
+      doc: Bookings.findOne({_id: this.params._id})
+    }})
   }
 })
 
