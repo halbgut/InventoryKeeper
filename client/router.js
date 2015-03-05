@@ -24,7 +24,7 @@ Router.route('/objects/new', {
   }
 , action: function () {
     var self = this
-    // self.render('blockObjectsNew')
+    self.render('blockObjectsNew')
   }
 })
 
