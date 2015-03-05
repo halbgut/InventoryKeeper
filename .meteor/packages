@@ -9,3 +9,4 @@ autopublish
 insecure
 aldeed:autoform
 aldeed:collection2
+iron:router
