@@ -1,11 +1,11 @@
 Router.route('/', {
   name: 'timesheet'
 , waitOn: function () {
-    return Meteor.subscribe('allObjects')
-    return Meteor.subscribe('allBookigs')
+    return [Meteor.subscribe('allObjects'), Meteor.subscribe('allBookings')]
   }
 , action: function () {
     var self = this
+    console.log(Bookings.find().fetch())
     self.render('pageTimesheet')
   }
 , data: {

@@ -1,7 +1,7 @@
-var currentDate = new Date()
-, currentTimeStamp = currentDate.value
-
 if(Objects.find({}).count() < 1) {
+  var currentDate = new Date()
+  , currentTimeStamp = currentDate.toDateString()
+
   Objects.insert({
     name: 'JVC Camera'
   , objectType: 'Camera'
