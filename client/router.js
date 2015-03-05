@@ -2,6 +2,7 @@ Router.route('/', {
   name: 'timesheet'
 , waitOn: function () {
     return Meteor.subscribe('allObjects')
+    return Meteor.subscribe('allBookigs')
   }
 , action: function () {
     var self = this
@@ -9,6 +10,7 @@ Router.route('/', {
   }
 , data: {
     objects: Objects.find()
+  , bookings: Bookings.find()
   }
 })
 
