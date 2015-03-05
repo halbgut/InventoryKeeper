@@ -7,4 +7,7 @@ Router.route('/', {
     var self = this
     self.render('pageTimesheet')
   }
+, data: {
+    objects: Objects.find()
+  }
 })
