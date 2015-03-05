@@ -14,4 +14,8 @@ if(Objects.find({}).count() < 1) {
   , objectType: 'Mic'
   , serialNo: '2391DSG'
   })
+  Accounts.createUser({
+    username: 'superman'
+  , password: 'megasicher'
+  })
 }

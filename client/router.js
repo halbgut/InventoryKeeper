@@ -11,3 +11,11 @@ Router.route('/', {
     objects: Objects.find()
   }
 })
+
+Router.route('/login', {
+  name: 'user.login'
+, action: function () {
+    var self = this
+    self.render('blockLogin')
+  }
+})
