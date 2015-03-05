@@ -1,6 +1,7 @@
 Router.route('/', {
   name: 'timesheet'
-, action: function () {
-    ;
+, waitOn: function () {
+    return Meteor.subscribe('allObjects')
   }
+, action: function () {}
 })
