@@ -1,6 +1,4 @@
 if(Objects.find({}).count() < 1) {
-  var currentDate = new Date()
-  , currentTimeStamp = currentDate.toDateString()
 
   Objects.insert({
     name: 'JVC Camera'
@@ -27,8 +25,8 @@ if(Objects.find({}).count() < 1) {
     user: Meteor.users.findOne({})._id
   , description: 'Engadiner Ski Marathon'
   , timeRange: {
-      from: currentTimeStamp + 10000
-    , to: currentTimeStamp + 30000
+      from: new Date(new Date.getTime() + 10000).toDateString()
+    , to: new Date(new Date.getTime() + 30000).toDateString()
     }
   , subjects: [
       Objects.findOne({serialNo: 'XYS9448'})._id
@@ -38,8 +36,8 @@ if(Objects.find({}).count() < 1) {
     user: Meteor.users.findOne({})._id
   , description: 'Some Event'
   , timeRange: {
-      from: currentTimeStamp + 40000
-    , to: currentTimeStamp + 60000
+      from: new Date(new Date.getTime() + 40000).toDateString()
+    , to: new Date(new Date.getTime() + 60000).toDateString()
     }
   , subjects: [
       Objects.findOne({serialNo: 'XZS9480'})._id
@@ -50,8 +48,8 @@ if(Objects.find({}).count() < 1) {
     user: Meteor.users.findOne({})._id
   , description: 'Another Event'
   , timeRange: {
-      from: currentTimeStamp + 15000
-    , to: currentTimeStamp + 30000
+      from: new Date(new Date.getTime() + 15000).toDateString()
+    , to: new Date(new Date.getTime() + 30000).toDateString()
     }
   , subjects: [
       Objects.findOne({serialNo: '2391DSG'})._id
