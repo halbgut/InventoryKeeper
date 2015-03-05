@@ -25,8 +25,8 @@ if(Objects.find({}).count() < 1) {
     user: Meteor.users.findOne({})._id
   , description: 'Engadiner Ski Marathon'
   , timeRange: {
-      from: new Date(new Date().getTime() + 10000).toISOString()
-    , to: new Date(new Date().getTime() + 30000).toISOString()
+      from: new Date(new Date().getTime() + 10000000).toISOString()
+    , to: new Date(new Date().getTime() + 30000000).toISOString()
     }
   , subjects: [
       Objects.findOne({serialNo: 'XYS9448'})._id
@@ -36,8 +36,8 @@ if(Objects.find({}).count() < 1) {
     user: Meteor.users.findOne({})._id
   , description: 'Some Event'
   , timeRange: {
-      from: new Date(new Date().getTime() + 40000).toISOString()
-    , to: new Date(new Date().getTime() + 60000).toISOString()
+      from: new Date(new Date().getTime() + 40000000).toISOString()
+    , to: new Date(new Date().getTime() + 60000000).toISOString()
     }
   , subjects: [
       Objects.findOne({serialNo: 'XZS9480'})._id
@@ -48,8 +48,8 @@ if(Objects.find({}).count() < 1) {
     user: Meteor.users.findOne({})._id
   , description: 'Another Event'
   , timeRange: {
-      from: new Date(new Date().getTime() + 15000).toISOString()
-    , to: new Date(new Date().getTime() + 30000).toISOString()
+      from: new Date(new Date().getTime() + 15000000).toISOString()
+    , to: new Date(new Date().getTime() + 30000000).toISOString()
     }
   , subjects: [
       Objects.findOne({serialNo: '2391DSG'})._id

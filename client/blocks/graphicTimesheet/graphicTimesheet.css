@@ -1,0 +1,16 @@
+.graphicTimesheet__row {
+  display: block;
+  width: 100%;
+}
+
+.graphicTimesheet__row:nth-child(2) {
+  background-color: hsl(0, 0%, 80%);
+}
+
+.graphicTimesheet__item {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: hsl(0, 0%, 30%);
+}
