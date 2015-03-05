@@ -5,7 +5,6 @@ Router.route('/', {
   }
 , action: function () {
     var self = this
-    console.log(Bookings.find().fetch())
     self.render('pageTimesheet')
   }
 , data: {
