@@ -28,6 +28,7 @@ graphicTimesheet = {
     descriptionElement.innerHTML = description
     descriptionElement.className = 'graphicTimesheet__rowDescription'
     element.className = 'graphicTimesheet__item'
+    element.style.background = 'hsl(' + Math.round(Math.random() * 360) + ', 40%, 70%)'
     return element
   }
 , addItem: function (fromUnixTime, toUnixTime, rowId, description) {

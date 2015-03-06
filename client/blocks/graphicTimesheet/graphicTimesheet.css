@@ -1,15 +1,25 @@
+.graphicTimesheet {
+  margin-top: 1rem;
+}
+
 .graphicTimesheet__row {
   display: block;
   position: relative;
   width: 100%;
+  margin-left: 11rem;
 }
 
 .graphicTimesheet__row:nth-child(2) {
   background-color: hsl(0, 0%, 80%);
 }
 
+.graphicTimesheet__rowTitle {
+  margin-left: -10.5rem;
+}
+
 .graphicTimesheet__item {
   position: absolute;
+  z-index: -1;
   height: 100%;
   left: 0;
   top: 0;
