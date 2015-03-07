@@ -1,4 +1,9 @@
 <template name="blockBookingsNew">
-  {{ #quickForm collection="Bookings" type="insert" }}
-  {{ /quickForm }}
+  {{ #autoForm collection="Bookings" type="insert" }}
+    {{ > afQuickField name="user" }}
+    {{ > afQuickField name="description" }}
+    {{ > afQuickField name="timeRange.from" type='datetime-local' }}
+    {{ > afQuickField name="timeRange.to" type='datetime-local' }}
+    {{ > afQuickField name="subjects" }}
+  {{ /autoForm }}
 </template>
