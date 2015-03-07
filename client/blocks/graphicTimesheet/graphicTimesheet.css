@@ -1,5 +1,7 @@
 .graphicTimesheet {
+  position: relative;
   margin-top: 1rem;
+  overflow-y: scroll;
 }
 
 .graphicTimesheet__row {
@@ -9,7 +11,7 @@
   margin-left: 11rem;
 }
 
-.graphicTimesheet__row:nth-child(2) {
+.graphicTimesheet__row:nth-child(2n) {
   background-color: hsl(0, 0%, 80%);
 }
 
@@ -24,4 +26,25 @@
   left: 0;
   top: 0;
   background-color: hsl(0, 0%, 30%);
+}
+
+.graphicTimesheet__header {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 1rem;
+  overflow: hidden;
+}
+
+.graphicTimesheet__time {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.graphicTimesheet__time--to {
+  position: absolute;
+  left: inherit;
+  right: 0;
+  top: 0;
 }

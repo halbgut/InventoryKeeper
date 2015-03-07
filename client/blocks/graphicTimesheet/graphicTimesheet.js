@@ -1,6 +1,6 @@
 graphicTimesheet = {
   config: {
-    minTime: new Date()
+    minTime: new Date().getTime()
   , maxTime: (new Date().getTime() + 50000)
   }
 , rows: {}
@@ -9,7 +9,8 @@ graphicTimesheet = {
     self.element = document.querySelector(elementSelector)
     if(!self.element) return false
     self.conversionRate = 0.00001
-    self.element.style.width = (self.config.maxTime - self.config.minTime) * self.conversionRate + 'px'
+    self.element.querySelector('.graphicTimesheet__time--from').innerHTML = new Date(self.config.minTime)
+    self.element.querySelector('.graphicTimesheet__time--to').innerHTML = new Date(self.config.maxTime)
     self.rowify(items)
   }
 , rowTemplate: function (rowId, rowName) {
