@@ -1,7 +1,7 @@
 graphicTimesheet = {
   config: {
     minTime: new Date().getTime()
-  , maxTime: (new Date().getTime() + 50000)
+  , maxTime: (new Date().getTime() + 500000000)
   }
 , rows: {}
 , init: function (elementSelector, items) {
@@ -9,7 +9,7 @@ graphicTimesheet = {
     self.element = document.querySelector(elementSelector)
     if(!self.element) return false
     self.conversionRate = 0.00001
-    self.querySelector('.graphicTimesheet__row').style.width = (self.conversionRate * self.config.maxTime) + 'px'
+    self.element.querySelector('.graphicTimesheet__header').style.width = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime)) + 'px'
     self.element.querySelector('.graphicTimesheet__time--from').innerHTML = new Date(self.config.minTime)
     self.element.querySelector('.graphicTimesheet__time--to').innerHTML = new Date(self.config.maxTime)
     self.rowify(items)
@@ -53,6 +53,7 @@ graphicTimesheet = {
     rowName = rowName || rowId
     self.rows[rowId] = self.rowTemplate(rowId, rowName)
     self.element.appendChild(self.rows[rowId])
+    self.rows[rowId].style.width = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime)) + 'px'
   }
 , rowify: function (items) {
     var self = this

@@ -12,7 +12,7 @@
 }
 
 .graphicTimesheet__row:nth-child(2n) {
-  background-color: hsl(0, 0%, 80%);
+  background-color: hsl(0, 0%, 90%);
 }
 
 .graphicTimesheet__rowTitle {
@@ -21,7 +21,6 @@
 
 .graphicTimesheet__item {
   position: absolute;
-  z-index: -1;
   height: 100%;
   left: 0;
   top: 0;
