@@ -9,6 +9,7 @@ graphicTimesheet = {
     self.element = document.querySelector(elementSelector)
     if(!self.element) return false
     self.conversionRate = 0.00001
+    self.querySelector('.graphicTimesheet__row').style.width = (self.conversionRate * self.config.maxTime) + 'px'
     self.element.querySelector('.graphicTimesheet__time--from').innerHTML = new Date(self.config.minTime)
     self.element.querySelector('.graphicTimesheet__time--to').innerHTML = new Date(self.config.maxTime)
     self.rowify(items)
@@ -32,18 +33,18 @@ graphicTimesheet = {
     element.style.background = 'hsl(' + Math.round(Math.random() * 360) + ', 40%, 70%)'
     return element
   }
-, addItem: function (fromUnixTime, toUnixTime, rowId, description) {
+, addItem: function (fromUnixTime, toUnixTime, rowId, description, rowLabel) {
     var self = this
   , newItem = self.itemTemplate(description)
   , timeDiff = toUnixTime - fromUnixTime
     newItem.style.width = timeDiff * self.conversionRate + 'px'
     newItem.style.left = (fromUnixTime - self.config.minTime) * self.conversionRate + 'px'
-    self.addToRow(newItem, rowId)
+    self.addToRow(newItem, rowId, rowLabel)
   }
-, addToRow: function (node, rowId) {
+, addToRow: function (node, rowId, rowLabel) {
     var self = this
     if(!self.rows[rowId]) {
-      self.addRow(rowId)
+      self.addRow(rowId, rowLabel)
     }
     self.rows[rowId].appendChild(node)
   }
@@ -56,7 +57,7 @@ graphicTimesheet = {
 , rowify: function (items) {
     var self = this
     _.each(items, function (item) {
-      self.addItem(item.fromUnixTime, item.toUnixTime, item.id, item.description)
+      self.addItem(item.fromUnixTime, item.toUnixTime, item.id, item.description, item.label)
     })
   }
 }
