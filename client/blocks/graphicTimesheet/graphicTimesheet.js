@@ -31,6 +31,7 @@ graphicTimesheet = {
     var element = document.createElement('div')
   , descriptionElement = document.createElement('p')
     descriptionElement.innerHTML = description
+    element.appendChild(descriptionElement)
     descriptionElement.className = 'graphicTimesheet__rowDescription'
     element.className = 'graphicTimesheet__item'
     return element
