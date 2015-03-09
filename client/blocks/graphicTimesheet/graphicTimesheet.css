@@ -67,7 +67,12 @@
 }
 
 .graphicTimesheet__marker {
-  display: inline;
+  display: inline-block;
   height: 100%;
   border-right: 1px solid hsl(0, 0%, 0%);
+  color: transparent;
+}
+
+.graphicTimesheet__marker:hover {
+  color: hsl(0, 0%, 0%);
 }

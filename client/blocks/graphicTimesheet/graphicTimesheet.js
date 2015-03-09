@@ -8,8 +8,8 @@ graphicTimesheet = {
     var self = this
     self.element = document.querySelector(elementSelector)
     if(!self.element) return false
-    self.conversionRate = 0.000004
-    self.element.querySelector('.graphicTimesheet__header').style.width = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime)) + 'px'
+    self.conversionRate = 0.000003
+    self.element.querySelector('.graphicTimesheet__header').style.width = self.conversionRate * (self.config.maxTime - self.config.minTime) + 'px'
     self.element.querySelector('.graphicTimesheet__time--from').innerHTML = new Date(self.config.minTime)
     self.element.querySelector('.graphicTimesheet__time--to').innerHTML = new Date(self.config.maxTime)
     self.createTimeRuler()
@@ -24,7 +24,7 @@ graphicTimesheet = {
     titleElement.className = 'graphicTimesheet__rowTitle'
     element.className = 'graphicTimesheet__row'
     element.id = 'graphicTimesheet__row--' + rowId
-    element.style.width = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime)) + 'px'
+    element.style.width = self.conversionRate * (self.config.maxTime - self.config.minTime) + 'px'
     return element
   }
 , itemTemplate: function (description) {
@@ -75,7 +75,7 @@ graphicTimesheet = {
 , createTimeRuler: function () {
     var self = this
   , hoursInRange = self.convertUnixToHours(self.config.maxTime - self.config.minTime)
-  , rowWidth = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime))
+  , rowWidth = self.conversionRate * (self.config.maxTime - self.config.minTime)
 
     dayRow = self.rowTemplate('days', '')
     dayRow.appendChild(self.createDayRuler(hoursInRange / 24))
@@ -88,14 +88,14 @@ graphicTimesheet = {
   }
 , calcCurrHourDiff: function () {
     var self = this
-  , currentHours = (self.config.minTime - (new Date().getTime())) / 3600000
-  , diff = Math.round((currentHours - Math.floor(currentHours) * 3600000 * -1) * self.conversionRate)
+  , currentHours = self.config.minTime / 3600000
+  , diff = (Math.floor(currentHours) * 3600000 - currentHours * 3600000) * self.conversionRate
     return diff
   }
 , calcCurrDayDiff: function () {
     var self = this
-  , currentDays = (self.config.minTime - (new Date().getTime())) / 86400000
-  , diff = Math.round((currentDays - Math.floor(currentDays) * 86400000 * -1) * self.conversionRate)
+  , currentDays = self.config.minTime / 86400000
+  , diff = (Math.floor(currentDays) * 86400000 - currentDays * 86400000) * self.conversionRate
     return diff
   }
 , convertUnixToHours: function (unixTime) {
@@ -106,17 +106,18 @@ graphicTimesheet = {
   , hourWidth = (3600000 * self.conversionRate) + 'px'
   , hourRuler = document.createElement('div')
     hourRuler.className = 'graphicTimesheet__ruler graphicTimesheet__ruler--hour'
-    hourRuler.style.marginLeft = self.calcCurrHourDiff() + 'px'
+    hourRuler.style.marginLeft = (self.calcCurrHourDiff()) + 'px'
     for (var i = 0; i < number; i++) {
-      hourRuler.appendChild(self.createHourElement(hourWidth))
+      hourRuler.appendChild(self.createHourElement(hourWidth, new Date(i * 3600000 + self.config.minTime)))
     }
     return hourRuler
   }
-, createHourElement: function (hourWidth) {
+, createHourElement: function (hourWidth, date) {
     var self = this
   , hour = document.createElement('div')
     hour.className = 'graphicTimesheet__marker graphicTimesheet____marker--hour'
-    hour.style.marginLeft = hourWidth
+    hour.style.width = hourWidth
+    hour.innerHTML = date.getHours()
     return hour
   }
 , createDayRuler: function (number) {
@@ -124,17 +125,18 @@ graphicTimesheet = {
   , dayWidth = (86400000 * self.conversionRate) + 'px'
   , dayRuler = document.createElement('div')
     dayRuler.className = 'graphicTimesheet__ruler graphicTimesheet__ruler--day'
-    dayRuler.style.marginLeft = self.calcCurrDayDiff() + 'px'
+    dayRuler.style.marginLeft = (self.calcCurrDayDiff()) + 'px'
     for (var i = 0; i < number; i++) {
-      dayRuler.appendChild(self.createDayElement(dayWidth))
+      dayRuler.appendChild(self.createDayElement(dayWidth, new Date(i * 86400000 + self.config.minTime)))
     }
     return dayRuler
   }
-, createDayElement: function (dayWidth) {
+, createDayElement: function (dayWidth, date) {
     var self = this
   , day = document.createElement('div')
     day.className = 'graphicTimesheet__marker graphicTimesheet____marker--day'
-    day.style.marginLeft = dayWidth
+    day.style.width = dayWidth
+    day.innerHTML = date.getDay()
     return day
   }
 }
