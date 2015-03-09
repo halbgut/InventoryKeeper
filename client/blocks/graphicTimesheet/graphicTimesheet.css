@@ -50,6 +50,7 @@
   position: relative;
   width: 100%;
   height: 1rem;
+  margin-left: 10.5rem;
   overflow: hidden;
 }
 
@@ -71,6 +72,7 @@
   height: 100%;
   border-right: 1px solid hsl(0, 0%, 0%);
   color: transparent;
+  transition: all .4s;
 }
 
 .graphicTimesheet__marker:hover {

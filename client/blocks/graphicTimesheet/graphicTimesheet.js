@@ -89,13 +89,13 @@ graphicTimesheet = {
 , calcCurrHourDiff: function () {
     var self = this
   , currentHours = self.config.minTime / 3600000
-  , diff = (Math.floor(currentHours) * 3600000 - currentHours * 3600000) * self.conversionRate
+  , diff = (Math.floor(currentHours) * 3600000 - currentHours * 3600000 + new Date().getTimezoneOffset() * 60000) * self.conversionRate
     return diff
   }
 , calcCurrDayDiff: function () {
     var self = this
   , currentDays = self.config.minTime / 86400000
-  , diff = (Math.floor(currentDays) * 86400000 - currentDays * 86400000) * self.conversionRate
+  , diff = (Math.floor(currentDays) * 86400000 - currentDays * 86400000 + new Date().getTimezoneOffset() * 60000) * self.conversionRate
     return diff
   }
 , convertUnixToHours: function (unixTime) {
@@ -136,7 +136,7 @@ graphicTimesheet = {
   , day = document.createElement('div')
     day.className = 'graphicTimesheet__marker graphicTimesheet____marker--day'
     day.style.width = dayWidth
-    day.innerHTML = date.getDay()
+    day.innerHTML = date.getDate()
     return day
   }
 }
