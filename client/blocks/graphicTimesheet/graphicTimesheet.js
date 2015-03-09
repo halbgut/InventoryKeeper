@@ -12,16 +12,19 @@ graphicTimesheet = {
     self.element.querySelector('.graphicTimesheet__header').style.width = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime)) + 'px'
     self.element.querySelector('.graphicTimesheet__time--from').innerHTML = new Date(self.config.minTime)
     self.element.querySelector('.graphicTimesheet__time--to').innerHTML = new Date(self.config.maxTime)
+    self.createTimeRuler()
     self.rowify(items)
   }
 , rowTemplate: function (rowId, rowName) {
-    var element = document.createElement('div')
+    var self = this
+  , element = document.createElement('div')
   , titleElement = document.createElement('h3')
     titleElement.innerHTML = rowName
     element.appendChild(titleElement)
     titleElement.className = 'graphicTimesheet__rowTitle'
     element.className = 'graphicTimesheet__row'
     element.id = 'graphicTimesheet__row--' + rowId
+    element.style.width = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime)) + 'px'
     return element
   }
 , itemTemplate: function (description) {
@@ -53,7 +56,6 @@ graphicTimesheet = {
     row.label = row.label || row.id
     self.rows[row.id] = self.rowTemplate(row.id, row.label, row.color)
     self.element.appendChild(self.rows[row.id])
-    self.rows[row.id].style.width = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime)) + 'px'
   }
 , rowify: function (items) {
     var self = this
@@ -68,6 +70,71 @@ graphicTimesheet = {
       , label: item.rowLabel
       })
     })
+  }
+, createTimeRuler: function () {
+    var self = this
+  , hoursInRange = self.convertUnixToHours(self.config.maxTime - self.config.minTime)
+  , rowWidth = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime))
+
+    dayRow = self.rowTemplate('days', '')
+    dayRow.appendChild(self.createDayRuler(hoursInRange / 24))
+    self.element.appendChild(dayRow)
+    dayRow.style.marginLeft = self.calcCurrDayDiff() + 'px'
+    dayRow.style.width = ((self.calcCurrDayDiff() * -1) + rowWidth) + 'px'
+    hourRow = self.rowTemplate('hours', '')
+    hourRow.appendChild(self.createHourRuler(hoursInRange))
+    hourRow.style.marginLeft = self.calcCurrHourDiff() + 'px'
+    hourRow.style.width = ((self.calcCurrHourDiff() * -1) + rowWidth) + 'px'
+    self.element.appendChild(hourRow)
+  }
+, calcCurrHourDiff: function () {
+    var self = this
+  , currentHours = (self.config.minTime - (new Date().getTime())) / 3600000
+  , diff = Math.round((currentHours - Math.floor(currentHours) * 3600000 * -1) * self.conversionRate)
+    return diff
+  }
+, calcCurrDayDiff: function () {
+    var self = this
+  , currentDays = (self.config.minTime - (new Date().getTime())) / 86400000
+  , diff = Math.round((currentDays - Math.floor(currentDays) * 86400000 * -1) * self.conversionRate)
+    return diff
+  }
+, convertUnixToHours: function (unixTime) {
+    return unixTime / 1000 / 60 / 60
+  }
+, createHourRuler: function (number) {
+    var self = this
+  , hourWidth = Math.floor(3600000 * self.conversionRate) + 'px'
+  , hourRuler = document.createElement('div')
+    hourRuler.className = 'graphicTimesheet__hourRuler'
+    for (var i = 0; i < number; i++) {
+      hourRuler.appendChild(self.createHourElement(hourWidth))
+    }
+    return hourRuler
+  }
+, createHourElement: function (hourWidth) {
+    var self = this
+  , hour = document.createElement('div')
+    hour.className = 'graphicTimesheet__marker graphicTimesheet____marker--hour'
+    hour.style.marginLeft = hourWidth
+    return hour
+  }
+, createDayRuler: function (number) {
+    var self = this
+  , dayWidth = Math.floor(86400000 * self.conversionRate) + 'px'
+  , dayRuler = document.createElement('div')
+    dayRuler.className = 'graphicTimesheet__dayRuler'
+    for (var i = 0; i < number; i++) {
+      dayRuler.appendChild(self.createDayElement(dayWidth))
+    }
+    return dayRuler
+  }
+, createDayElement: function (dayWidth) {
+    var self = this
+  , day = document.createElement('div')
+    day.className = 'graphicTimesheet__marker graphicTimesheet____marker--day'
+    day.style.marginLeft = dayWidth
+    return day
   }
 }
 
