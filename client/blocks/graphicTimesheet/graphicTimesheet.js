@@ -32,7 +32,7 @@ graphicTimesheet = {
   , descriptionElement = document.createElement('p')
     descriptionElement.innerHTML = description
     element.appendChild(descriptionElement)
-    descriptionElement.className = 'graphicTimesheet__rowDescription'
+    descriptionElement.className = 'graphicTimesheet__itemDescription'
     element.className = 'graphicTimesheet__item'
     return element
   }

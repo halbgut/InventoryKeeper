@@ -30,6 +30,21 @@
   background-color: hsl(0, 0%, 30%);
 }
 
+.graphicTimesheet__item:hover {
+  z-index: 2;
+}
+
+.graphicTimesheet__itemDescription {
+  opacity: 0;
+  background-color: hsla(0, 0%, 100%, .3);
+  white-space: nowrap;
+  transition: all .2s;
+}
+
+.graphicTimesheet__itemDescription:hover {
+  opacity: 1;
+}
+
 .graphicTimesheet__header {
   display: block;
   position: relative;
