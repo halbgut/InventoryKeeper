@@ -30,35 +30,43 @@ graphicTimesheet = {
     descriptionElement.innerHTML = description
     descriptionElement.className = 'graphicTimesheet__rowDescription'
     element.className = 'graphicTimesheet__item'
-    element.style.background = 'hsl(' + Math.round(Math.random() * 360) + ', 40%, 70%)'
     return element
   }
-, addItem: function (fromUnixTime, toUnixTime, rowId, description, rowLabel) {
+, addItem: function (item, row) {
     var self = this
-  , newItem = self.itemTemplate(description)
-  , timeDiff = toUnixTime - fromUnixTime
+  , newItem = self.itemTemplate(item.description)
+  , timeDiff = item.toUnixTime - item.fromUnixTime
     newItem.style.width = timeDiff * self.conversionRate + 'px'
-    newItem.style.left = (fromUnixTime - self.config.minTime) * self.conversionRate + 'px'
-    self.addToRow(newItem, rowId, rowLabel)
+    newItem.style.left = (item.fromUnixTime - self.config.minTime) * self.conversionRate + 'px'
+    newItem.style.backgroundColor = item.color
+    self.addToRow(newItem, row)
   }
-, addToRow: function (node, rowId, rowLabel) {
+, addToRow: function (node, row) {
     var self = this
-    if(!self.rows[rowId]) {
-      self.addRow(rowId, rowLabel)
+    if(!self.rows[row.id]) {
+      self.addRow(row)
     }
-    self.rows[rowId].appendChild(node)
+    self.rows[row.id].appendChild(node)
   }
-, addRow: function (rowId, rowName) {
+, addRow: function (row) {
     var self = this
-    rowName = rowName || rowId
-    self.rows[rowId] = self.rowTemplate(rowId, rowName)
-    self.element.appendChild(self.rows[rowId])
-    self.rows[rowId].style.width = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime)) + 'px'
+    row.label = row.label || row.id
+    self.rows[row.id] = self.rowTemplate(row.id, row.label, row.color)
+    self.element.appendChild(self.rows[row.id])
+    self.rows[row.id].style.width = Math.round(self.conversionRate * (self.config.maxTime - self.config.minTime)) + 'px'
   }
 , rowify: function (items) {
     var self = this
     _.each(items, function (item) {
-      self.addItem(item.fromUnixTime, item.toUnixTime, item.id, item.description, item.label)
+      self.addItem({
+        fromUnixTime: item.fromUnixTime
+      , toUnixTime: item.toUnixTime
+      , description: item.description
+      , color: item.color
+      }, {
+        id: item.rowId
+      , label: item.rowLabel
+      })
     })
   }
 }
