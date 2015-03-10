@@ -5,3 +5,9 @@ body {
 td {
   padding: 5px 10px;
 }
+
+h1, h2 {
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: .8rem 0 .2rem 0;
+}

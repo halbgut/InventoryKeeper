@@ -1,4 +1,5 @@
 <template name="blockListObjects">
+  <h2>Objects</h2>
   <table>
     <tbody>
       {{ #each objects }}
@@ -10,7 +11,6 @@
           <td><a href="{{ pathFor 'objects.update' }}">edit</a></td>
         </tr>
       {{ /each }}
-      <a href="{{ pathFor 'objects.new' }}">New</a>
     </tbody>
   </table>
 </template>
