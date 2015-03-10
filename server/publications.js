@@ -5,3 +5,7 @@ Meteor.publish('allObjects', function () {
 Meteor.publish('allBookings', function () {
   return Bookings.find()
 })
+
+Meteor.publish('allUsers', function () {
+  return Meteor.users.find()
+})

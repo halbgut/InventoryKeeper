@@ -36,7 +36,6 @@ graphicTimesheet = {
 , clearRows: function () {
     var self = this
     _.each(self.rows, function (item, key) {
-      console.log(item, key)
       self.element.removeChild(item)
     })
     self.rows = {}

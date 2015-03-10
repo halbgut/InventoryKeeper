@@ -56,7 +56,7 @@ Router.route('/objects/:_id/update', {
 Router.route('/bookings/new', {
   name: 'bookings.new'
 , waitOn: function () {
-    return Meteor.subscribe('allObjects')
+    return [Meteor.subscribe('allObjects'), Meteor.subscribe('allUsers')]
   }
 , onBeforeAction: function () {
     var self = this
