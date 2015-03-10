@@ -10,7 +10,7 @@ Lightbox = {
   }
 , addURLListeners: function () {
     var self = this
-    addEventListener('hashchange', function () {
+    setInterval(function () {
       self.checkRoute()
     })
   }
