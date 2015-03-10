@@ -79,4 +79,5 @@
 
 .graphicTimesheet__marker:hover {
   color: hsl(0, 0%, 0%);
+  background-color: hsl(0, 0%, 80%);
 }

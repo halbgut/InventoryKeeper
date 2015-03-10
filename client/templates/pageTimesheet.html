@@ -1,6 +1,9 @@
 <template name="pageTimesheet">
   <main class="timesheet">
     {{ > graphicTimesheet dep=formatedBookingsDep items=getFormatedBookings }}
+    {{ #lightbox route='newBooking' }}
+      {{ > blockBookingsNew }}
+    {{ /lightbox }}
     {{ > blockListObjects }}
     {{ > blockListBookings }}
   </main>

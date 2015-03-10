@@ -1,0 +1,38 @@
+.lightbox {
+  overflow: hidden;
+  position: absolute;
+  z-index: 100;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  height: 0;
+  width: 100vw;
+  transition: all .2s;
+}
+
+.lightbox--js--open {
+  opacity: 1;
+  height: 100vh;
+}
+
+.lightbox__wrapper {
+  position: absolute;
+  z-index: 101;
+  width: 40vw;
+  min-width: 200px;
+  min-height: 400px;
+  left: 30vw;
+  top: 50%;
+  padding: 2rem;
+  margin-top: -200px;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.lightbox__background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: hsla(0, 0%, 0%, .6);
+}
