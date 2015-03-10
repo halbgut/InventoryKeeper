@@ -15,6 +15,9 @@ Router.route('/', {
 
 Router.route('/objects/new', {
   name: 'objects.new'
+, waitOn: function () {
+    return Meteor.subscribe('allObjects')
+  }
 , onBeforeAction: function () {
     var self = this
     if(!Meteor.userId()) {
@@ -52,6 +55,9 @@ Router.route('/objects/:_id/update', {
 
 Router.route('/bookings/new', {
   name: 'bookings.new'
+, waitOn: function () {
+    return Meteor.subscribe('allObjects')
+  }
 , onBeforeAction: function () {
     var self = this
     if(!Meteor.userId()) {
