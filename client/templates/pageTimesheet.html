@@ -1,7 +1,7 @@
 <template name="pageTimesheet">
   <main class="timesheet">
+    {{ > graphicTimesheet dep=formatedBookingsDep items=getFormatedBookings }}
     {{ > blockListObjects }}
     {{ > blockListBookings }}
-    {{ > graphicTimesheet items=getFormatedBookings }}
   </main>
 </template>

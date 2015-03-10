@@ -4,16 +4,42 @@ graphicTimesheet = {
   , maxTime: (new Date().getTime() + 500000000)
   }
 , rows: {}
+, getItems: function () {
+    return this.items
+  }
 , init: function (elementSelector, items) {
     var self = this
     self.element = document.querySelector(elementSelector)
     if(!self.element) return false
     self.conversionRate = 0.000003
+    self.items = items
     self.element.querySelector('.graphicTimesheet__header').style.width = self.conversionRate * (self.config.maxTime - self.config.minTime) + 'px'
     self.element.querySelector('.graphicTimesheet__time--from').innerHTML = new Date(self.config.minTime)
     self.element.querySelector('.graphicTimesheet__time--to').innerHTML = new Date(self.config.maxTime)
     self.createTimeRuler()
-    self.rowify(items)
+    Tracker.autorun(function () {
+      self.items = self.getItems()
+      self.clearRows()
+      _.each(self.items, function (item) {
+        self.addItem({
+          fromUnixTime: item.fromUnixTime
+        , toUnixTime: item.toUnixTime
+        , description: item.description
+        , color: item.color
+        }, {
+          id: item.rowId
+        , label: item.rowLabel
+        })
+      })
+    })
+  }
+, clearRows: function () {
+    var self = this
+    _.each(self.rows, function (item, key) {
+      console.log(item, key)
+      self.element.removeChild(item)
+    })
+    self.rows = {}
   }
 , rowTemplate: function (rowId, rowName) {
     var self = this
@@ -58,20 +84,6 @@ graphicTimesheet = {
     self.rows[row.id] = self.rowTemplate(row.id, row.label, row.color)
     self.element.appendChild(self.rows[row.id])
   }
-, rowify: function (items) {
-    var self = this
-    _.each(items, function (item) {
-      self.addItem({
-        fromUnixTime: item.fromUnixTime
-      , toUnixTime: item.toUnixTime
-      , description: item.description
-      , color: item.color
-      }, {
-        id: item.rowId
-      , label: item.rowLabel
-      })
-    })
-  }
 , createTimeRuler: function () {
     var self = this
   , hoursInRange = self.convertUnixToHours(self.config.maxTime - self.config.minTime)
@@ -80,10 +92,8 @@ graphicTimesheet = {
     dayRow = self.rowTemplate('days', '')
     dayRow.appendChild(self.createDayRuler(hoursInRange / 24))
     self.element.appendChild(dayRow)
-    dayRow.style.width = ((self.calcCurrDayDiff() * -1) + rowWidth) + 'px'
     hourRow = self.rowTemplate('hours', '')
     hourRow.appendChild(self.createHourRuler(hoursInRange))
-    hourRow.style.width = ((self.calcCurrHourDiff() * -1) + rowWidth) + 'px'
     self.element.appendChild(hourRow)
   }
 , calcCurrHourDiff: function () {
@@ -139,9 +149,4 @@ graphicTimesheet = {
     day.innerHTML = date.getDate()
     return day
   }
-}
-
-Template.graphicTimesheet.rendered = function () {
-  var self = this
-  graphicTimesheet.init('.graphicTimesheet', self.data.items)
 }

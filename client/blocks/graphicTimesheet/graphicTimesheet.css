@@ -24,6 +24,7 @@
 
 .graphicTimesheet__item {
   position: absolute;
+  overflow: hidden;
   height: 100%;
   left: 0;
   top: 0;
@@ -31,6 +32,7 @@
 }
 
 .graphicTimesheet__item:hover {
+  overflow: visible;
   z-index: 2;
 }
 
