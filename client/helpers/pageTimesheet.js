@@ -2,7 +2,7 @@ function getFormatedBookings () {
   var returnVal = []
   _formatedBookingsDep.depend()
   Bookings.find({}).forEach(function (booking) {
-    _.each(booking.subjects, function (thing) {
+    _.each(booking.objects, function (thing) {
       returnVal.push({
         rowId: thing
       , rowLabel: Objects.findOne({_id: thing}).serialNo
