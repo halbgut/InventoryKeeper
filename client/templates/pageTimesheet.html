@@ -1,6 +1,10 @@
 <template name="pageTimesheet">
   <main class="timesheet">
     {{ > graphicTimesheet dep=formatedBookingsDep items=getFormatedBookings }}
+    {{ #lightbox route='newObject' }}
+      {{ > blockObjectsNew }}
+    {{ /lightbox }}
+    <a href="#newObject">New Object</a>
     {{ #lightbox route='newBooking' }}
       {{ > blockBookingsNew }}
     {{ /lightbox }}

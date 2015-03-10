@@ -1,4 +1,7 @@
 <template name="blockObjectsNew">
-  {{ #quickForm collection="Objects" type="insert" }}
-  {{ /quickForm }}
+  {{ #autoForm collection="Objects" id="objectsNewForm" type="insert" }}
+    {{ > afQuickField name="name" }}
+    {{ > afQuickField name="objectType" }}
+    {{ > afQuickField name="serialNo" }}
+  {{ /autoForm }}
 </template>

@@ -2,9 +2,8 @@ Lightbox = {
   config: {
     openClass: 'lightbox--js--open'
   }
-, init: function (route) {
+, init: function () {
     var self = this
-    self.route = route
     self.checkRoute()
     self.addURLListeners()
   }
@@ -39,5 +38,6 @@ Template.lightbox.rendered = function () {
   var self = this
   thisLightbox = Object.create(Lightbox)
   thisLightbox.element = this.firstNode
-  thisLightbox.init(self.data.route)
+  thisLightbox.route = self.data.route
+  thisLightbox.init()
 }
