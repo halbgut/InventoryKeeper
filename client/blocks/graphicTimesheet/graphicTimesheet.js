@@ -126,9 +126,13 @@ graphicTimesheet = {
 , createHourElement: function (hourWidth, date) {
     var self = this
   , hour = document.createElement('div')
+  , label = document.createElement('text')
     hour.className = 'graphicTimesheet__marker graphicTimesheet__marker--hour'
     hour.style.width = hourWidth
-    hour.innerHTML = date.getHours()
+    hour.innerHTML = '&nbsp;'
+    label.innerHTML = date.getHours()
+    label.className = 'graphicTimesheet__markerText graphicTimesheet__markerText--hour'
+    hour.appendChild(label)
     return hour
   }
 , createDayRuler: function (number) {
@@ -145,9 +149,13 @@ graphicTimesheet = {
 , createDayElement: function (dayWidth, date) {
     var self = this
   , day = document.createElement('div')
+  , label = document.createElement('text')
     day.className = 'graphicTimesheet__marker graphicTimesheet__marker--day'
     day.style.width = dayWidth
-    day.innerHTML = date.getDate()
+    day.innerHTML = '&nbsp;'
+    label.innerHTML = date.getDate()
+    label.className = 'graphicTimesheet__markerText graphicTimesheet__markerText--day'
+    day.appendChild(label)
     return day
   }
 }

@@ -6,7 +6,7 @@
 
 .graphicTimesheet:before {
   content: '';
-  z-index: 1;
+  z-index: 3;
   position: absolute;
   left: 0;
   right: 0;
@@ -24,7 +24,7 @@
 
 .graphicTimesheet__titles {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   left: 0;
   bottom: 0;
   width: 8rem;
@@ -88,42 +88,64 @@
 }
 
 .graphicTimesheet__header {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 1rem;
-  margin-left: 8rem;
   overflow: hidden;
+  display: block;
+  width: 100%;
+  padding: 0 0.7rem;
+  margin-left: 8rem;
+  line-height: 2rem;
 }
 
 .graphicTimesheet__time {
-  position: absolute;
-  left: 0;
-  top: 0;
+  float: left;
 }
 
 .graphicTimesheet__time--to {
-  position: absolute;
-  left: inherit;
-  right: 0;
-  top: 0;
+  float: right;
 }
 
 .graphicTimesheet__marker {
+  position: relative;
   display: inline-block;
   height: 100%;
   border-right: 1px solid hsl(0, 0%, 0%);
-  color: transparent;
-  transition: all .4s;
+  background-color: hsl(0, 0%, 100%);
+  transition: background-color .2s;
+}
+
+.graphicTimesheet__markerText {
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 2;
+  width: 0;
+  right: 100%;
+  top: 0;
+  padding: 0;
+  background-color: hsl(0, 0%, 99%);
+  transition: all .2s;
+}
+
+.graphicTimesheet__marker:hover .graphicTimesheet__markerText {
+  width: auto;
+  opacity: 1;
+  padding: 0 .4rem;
 }
 
 .graphicTimesheet__marker:hover {
-  color: hsl(0, 0%, 0%);
   background-color: hsl(0, 0%, 80%);
+  color: hsl(0, 0%, 0%);
   cursor: default;
 }
 
 .graphicTimesheet__marker--day {
   color: hsl(0, 0%, 0%);
   background-color: hsl(0, 0%, 80%);
+}
+
+.graphicTimesheet__markerText--day {
+  position: static;
+  background-color: transparent;
+  opacity: 1;
+  padding: 0 .4rem;
 }
