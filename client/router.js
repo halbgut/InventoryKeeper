@@ -1,7 +1,7 @@
 Router.route('/', {
   name: 'timesheet'
 , waitOn: function () {
-    return [Meteor.subscribe('allObjects'), Meteor.subscribe('allCurrentBookings'), Meteor.subscribe('allUsers')]
+    return [Meteor.subscribe('allObjects'), Meteor.subscribe('allCurrentBookings'), Meteor.subscribe('allUsers'), Meteor.subscribe('allHumans')]
   }
 , action: function () {
     var self = this
@@ -10,6 +10,7 @@ Router.route('/', {
 , data: {
     objects: Objects.find()
   , bookings: Bookings.find()
+  , humans: Humans.find()
   }
 })
 

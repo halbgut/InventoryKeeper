@@ -1,4 +1,5 @@
 input[type=submit],
+button,
 .neatButton {
   display: inline-block;
   padding: .6rem 1rem;
@@ -12,13 +13,16 @@ input[type=submit],
 }
 
 input[type=submit]:focus,
+button:focus,
 .neatButton:focus,
 input[type=submit]:hover,
+button:hover,
 .neatButton:hover {
   background-color: hsl(0, 0%, 80%);
 }
 
 input[type=submit]:focus,
+button:focus,
 .neatButton:focus {
   outline: 0;
   text-decoration: underline;

@@ -12,3 +12,7 @@ Meteor.publish('allCurrentBookings', function () {
 Meteor.publish('allUsers', function () {
   return Meteor.users.find()
 })
+
+Meteor.publish('allHumans', function () {
+  return Humans.find()
+})

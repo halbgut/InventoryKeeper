@@ -15,3 +15,12 @@ Bookings.allow({
     return !!Meteor.user()
   }
 })
+
+Humans.allow({
+  insert: function () {
+    return !!Meteor.user()
+  }
+, update: function () {
+    return !!Meteor.user()
+  }
+})

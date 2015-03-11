@@ -14,9 +14,14 @@
         {{ > blockBookingsNew }}
       {{ /lightbox }}
       <a class="neatButton" href="#newBooking">New Booking</a>
+      {{ #lightbox route='newHuman' }}
+        {{ > blockHumansNew }}
+      {{ /lightbox }}
+      <a class="neatButton" href="#newHuman">New Human</a>
     {{ /if }}
     {{ > graphicTimesheet dep=formatedBookingsDep items=getFormatedBookings }}
     {{ > blockListObjects }}
     {{ > blockListBookings }}
+    {{ > blockListHumans }}
   </main>
 </template>

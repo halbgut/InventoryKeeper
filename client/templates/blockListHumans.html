@@ -1,0 +1,14 @@
+<template name="blockListHumans">
+  <article>
+    <h2>Humans</h2>
+    <table>
+      <tbody>
+        {{ #each humans }}
+          <tr>
+            <td>{{ name }}</td>
+          </tr>
+        {{ /each }}
+      </tbody>
+    </table>
+  </article>
+</template>
