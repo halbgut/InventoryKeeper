@@ -1,11 +1,26 @@
+input[type=submit],
 .neatButton {
-  display: inline-block;
+  display: block;
   padding: .6rem 1rem;
   color: hsl(0, 0%, 0%);
-  background-color: hsl(200, 50%, 80%);
+  background-color: hsl(0, 0%, 90%);
+  border: 1px solid hsl(0, 0%, 90%);
   transition: all .2s;
+  font-size: 1rem;
+  font-family: inherit;
+  text-decoration: none;
 }
 
+input[type=submit]:focus,
+.neatButton:focus,
+input[type=submit]:hover,
 .neatButton:hover {
-  background-color: hsl(200, 50%, 70%);
+  background-color: hsl(0, 0%, 80%);
+}
+
+input[type=submit]:focus,
+.neatButton:focus {
+  outline: 0;
+  text-decoration: underline;
+  border: 1px solid hsl(0, 0%, 0%);
 }
