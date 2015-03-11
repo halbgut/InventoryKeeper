@@ -124,7 +124,7 @@ graphicTimesheet = {
 , createHourElement: function (hourWidth, date) {
     var self = this
   , hour = document.createElement('div')
-    hour.className = 'graphicTimesheet__marker graphicTimesheet____marker--hour'
+    hour.className = 'graphicTimesheet__marker graphicTimesheet__marker--hour'
     hour.style.width = hourWidth
     hour.innerHTML = date.getHours()
     return hour
@@ -143,7 +143,7 @@ graphicTimesheet = {
 , createDayElement: function (dayWidth, date) {
     var self = this
   , day = document.createElement('div')
-    day.className = 'graphicTimesheet__marker graphicTimesheet____marker--day'
+    day.className = 'graphicTimesheet__marker graphicTimesheet__marker--day'
     day.style.width = dayWidth
     day.innerHTML = date.getDate()
     return day

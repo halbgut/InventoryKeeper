@@ -1,22 +1,21 @@
 <template name="pageTimesheet">
   <main class="timesheet">
     {{ #if not currentUser }}
-      <a href="#login">Login</a>
+      <a class="neatButton" href="#login">Login</a>
       {{ #lightbox route='login' }}
         {{ > blockLogin }}
       {{ /lightbox }}
-    {{ /if }}
-    {{ > graphicTimesheet dep=formatedBookingsDep items=getFormatedBookings }}
-    {{ #if currentUser }}
+    {{ else }}
       {{ #lightbox route='newObject' }}
         {{ > blockObjectsNew }}
       {{ /lightbox }}
-      <a href="#newObject">New Object</a>
+      <a class="neatButton" href="#newObject">New Object</a>
       {{ #lightbox route='newBooking' }}
         {{ > blockBookingsNew }}
       {{ /lightbox }}
-      <a href="#newBooking">New Booking</a>
+      <a class="neatButton" href="#newBooking">New Booking</a>
     {{ /if }}
+    {{ > graphicTimesheet dep=formatedBookingsDep items=getFormatedBookings }}
     {{ > blockListObjects }}
     {{ > blockListBookings }}
   </main>
