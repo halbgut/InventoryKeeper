@@ -3,6 +3,11 @@ Template.blockListBookings.helpers({
     return dateObject.getHours() + ':' + dateObject.getMinutes() + ' – ' + dateObject.getDate() + '.' + dateObject.getMonth() + ' ' + dateObject.getFullYear()
   }
 , getUsername: function (userId) {
-    return Meteor.users.findOne({_id: userId}).username
+    var user = {}
+    if(user = Meteor.users.findOne({_id: userId})) {
+      return user.username
+    } else {
+      return userId
+    }
   }
 })

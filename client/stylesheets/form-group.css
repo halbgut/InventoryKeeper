@@ -9,14 +9,26 @@
   content:':';
 }
 
-.form-group input {
+.form-group .checkbox label:after {
+  content: '';
+}
+
+.form-group input,
+.form-group select {
   float: right;
   width: 15rem;
+  height: 2.5rem;
   line-height: 2.5rem;
   padding: 0 .5rem;
   border: 1px solid hsl(0, 0%, 80%);
   font-size: 1rem;
   font-family: inherit;
+}
+
+.form-group input[type=checkbox] {
+  float: none;
+  width: auto;
+  height: auto;
 }
 
 .form-group input:focus {

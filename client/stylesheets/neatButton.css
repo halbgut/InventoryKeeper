@@ -1,6 +1,6 @@
 input[type=submit],
 .neatButton {
-  display: block;
+  display: inline-block;
   padding: .6rem 1rem;
   color: hsl(0, 0%, 0%);
   background-color: hsl(0, 0%, 90%);

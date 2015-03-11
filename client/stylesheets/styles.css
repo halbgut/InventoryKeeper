@@ -15,3 +15,7 @@ h1, h2 {
 article {
   padding: 1rem;
 }
+
+label {
+  font-weight: 800;
+}

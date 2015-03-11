@@ -1,0 +1,12 @@
+#bookingsNewForm .af-checkbox-group {
+  display: block;
+  max-height: 450px;
+  padding: .5rem;
+  overflow: hidden;
+  overflow-y: auto;
+  box-shadow: inset 0 0 8px -4px hsl(0, 0%,0%);
+}
+
+#bookingsNewForm {
+  max-width: 22rem;
+}

@@ -18,10 +18,7 @@
 }
 
 .lightbox__wrapper {
-  width: 40vw;
-  min-width: 200px;
   padding: 2rem;
-  margin-top: -200px;
   background-color: hsl(0, 0%, 100%);
 }
 

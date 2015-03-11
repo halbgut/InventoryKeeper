@@ -16,6 +16,18 @@ if(Objects.find({}).count() < 1) {
   , serialNo: '2391DSG'
   })
 
+  Objects.insert({
+    name: 'Sony FS7 4K'
+  , objectType: 'Camera'
+  , serialNo: 'PXW-FS7'
+  })
+
+  Objects.insert({
+    name: 'Luca Schmid'
+  , objectType: 'Lehrling'
+  , serialNo: '42'
+  })
+
   Accounts.createUser({
     username: 'superman'
   , password: 'megasicher'

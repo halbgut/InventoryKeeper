@@ -1,0 +1,7 @@
+.af-checkbox-group {
+  line-height: 1.8rem;
+}
+
+.af-checkbox-group input:focus {
+  outline: 1px;
+}
