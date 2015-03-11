@@ -1,6 +1,6 @@
 <template name="blockBookingsNew">
   {{ #autoForm collection="Bookings" id="bookingsNewForm" type="insert" }}
-    {{ > afQuickField name="user"}}
+    {{ > afQuickField name="human"}}
     {{ > afQuickField name="description" placeholder="schemaLabel" }}
     {{ > afQuickField name="timeRange.from" type='datetime-local' }}
     {{ > afQuickField name="timeRange.to" type='datetime-local' }}

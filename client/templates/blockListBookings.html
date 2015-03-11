@@ -6,7 +6,7 @@
         {{ #each bookings }}
           <tr>
             <td>{{ description }}</td>
-            <td>{{ getUsername user }}</td>
+            <td>{{ getHumansName human }}</td>
             <td>{{ formatDate timeRange.from }}</td>
             <td>{{ formatDate timeRange.to }}</td>
             <td><a href="{{ pathFor 'bookings.update' }}">edit</a></td>
