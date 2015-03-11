@@ -1,7 +1,7 @@
 Router.route('/', {
   name: 'timesheet'
 , waitOn: function () {
-    return [Meteor.subscribe('allObjects'), Meteor.subscribe('allBookings')]
+    return [Meteor.subscribe('allObjects'), Meteor.subscribe('allCurrentBookings')]
   }
 , action: function () {
     var self = this
@@ -75,7 +75,7 @@ Router.route('/bookings/new', {
 Router.route('/bookings/:_id/update', {
   name: 'bookings.update'
 , waitOn: function () {
-    return Meteor.subscribe('allBookings')
+    return Meteor.subscribe('allCurrentBookings')
   }
 , onBeforeAction: function () {
     var self = this
