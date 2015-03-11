@@ -13,6 +13,8 @@ graphicTimesheet = {
     if(!self.element) return false
     self.conversionRate = 0.000003
     self.items = items
+    self.titleWrapper = self.element.querySelector('.graphicTimesheet__titles')
+    self.rowContainer = self.element.querySelector('.graphicTimesheet__rowContainer')
     self.element.querySelector('.graphicTimesheet__header').style.width = self.conversionRate * (self.config.maxTime - self.config.minTime) + 'px'
     self.element.querySelector('.graphicTimesheet__time--from').innerHTML = new Date(self.config.minTime)
     self.element.querySelector('.graphicTimesheet__time--to').innerHTML = new Date(self.config.maxTime)
@@ -36,7 +38,7 @@ graphicTimesheet = {
 , clearRows: function () {
     var self = this
     _.each(self.rows, function (item, key) {
-      self.element.removeChild(item)
+      self.rowContainer.removeChild(item)
     })
     self.rows = {}
   }
@@ -45,7 +47,7 @@ graphicTimesheet = {
   , element = document.createElement('div')
   , titleElement = document.createElement('h3')
     titleElement.innerHTML = rowName
-    element.appendChild(titleElement)
+    self.titleWrapper.appendChild(titleElement)
     titleElement.className = 'graphicTimesheet__rowTitle'
     element.className = 'graphicTimesheet__row'
     element.id = 'graphicTimesheet__row--' + rowId
@@ -81,7 +83,7 @@ graphicTimesheet = {
     var self = this
     row.label = row.label || row.id
     self.rows[row.id] = self.rowTemplate(row.id, row.label, row.color)
-    self.element.appendChild(self.rows[row.id])
+    self.rowContainer.appendChild(self.rows[row.id])
   }
 , createTimeRuler: function () {
     var self = this
@@ -90,10 +92,10 @@ graphicTimesheet = {
 
     dayRow = self.rowTemplate('days', '')
     dayRow.appendChild(self.createDayRuler(hoursInRange / 24))
-    self.element.appendChild(dayRow)
+    self.rowContainer.appendChild(dayRow)
     hourRow = self.rowTemplate('hours', '')
     hourRow.appendChild(self.createHourRuler(hoursInRange))
-    self.element.appendChild(hourRow)
+    self.rowContainer.appendChild(hourRow)
   }
 , calcCurrHourDiff: function () {
     var self = this

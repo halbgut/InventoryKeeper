@@ -2,7 +2,34 @@
   position: relative;
   margin-top: 1rem;
   overflow: hidden;
+}
+
+.graphicTimesheet:before {
+  content: '';
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 8rem;
+  height: 100%;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.graphicTimesheet__rowContainer {
+  height: 100%;
+  width: auto;
   overflow-x: scroll;
+}
+
+.graphicTimesheet__titles {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  bottom: 0;
+  width: 8rem;
+  padding: 0 .5rem;
+  background-color: hsl(0, 0%, 100%);
+  vertical-align: bottom;
 }
 
 .graphicTimesheet__row {
@@ -20,7 +47,7 @@
 }
 
 .graphicTimesheet__rowTitle {
-  margin-left: -8rem;
+  line-height: 2rem;
 }
 
 .graphicTimesheet__item {
