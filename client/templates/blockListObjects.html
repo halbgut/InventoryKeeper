@@ -1,15 +1,17 @@
 <template name="blockListObjects">
-  <h2>Objects</h2>
-  <table>
-    <tbody>
-      {{ #each objects }}
-        <tr>
-          <td>{{ name }}</td>
-          <td>{{ objectType }}</td>
-          <td>{{ serialNo }}</td>
-          <td><a href="{{ pathFor 'objects.update' }}">edit</a></td>
-        </tr>
-      {{ /each }}
-    </tbody>
-  </table>
+  <article>
+    <h2>Objects</h2>
+    <table>
+      <tbody>
+        {{ #each objects }}
+          <tr>
+            <td>{{ name }}</td>
+            <td>{{ objectType }}</td>
+            <td>{{ serialNo }}</td>
+            <td><a href="{{ pathFor 'objects.update' }}">edit</a></td>
+          </tr>
+        {{ /each }}
+      </tbody>
+    </table>
+  </article>
 </template>

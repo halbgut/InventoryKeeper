@@ -13,6 +13,7 @@
   width: 8rem;
   height: 100%;
   background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 0 8px -4px hsl(0, 0%, 0%);
 }
 
 .graphicTimesheet__rowContainer {
@@ -27,7 +28,6 @@
   left: 0;
   bottom: 0;
   width: 8rem;
-  padding: 0 .5rem;
   background-color: hsl(0, 0%, 100%);
   vertical-align: bottom;
 }
@@ -46,7 +46,12 @@
   background-color: hsl(0, 0%, 90%);
 }
 
+.graphicTimesheet__rowTitle:nth-child(2n + 1) {
+  background-color: hsl(0, 0%, 90%);
+}
+
 .graphicTimesheet__rowTitle {
+  padding: 0 .5rem;
   line-height: 2rem;
   text-align: right;
 }

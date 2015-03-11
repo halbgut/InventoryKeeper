@@ -1,16 +1,18 @@
 <template name="blockListBookings">
-  <h2>Bookings</h2>
-  <table>
-    <tbody>
-      {{ #each bookings }}
-        <tr>
-          <td>{{ description }}</td>
-          <td>{{ getUsername user }}</td>
-          <td>{{ formatDate timeRange.from }}</td>
-          <td>{{ formatDate timeRange.to }}</td>
-          <td><a href="{{ pathFor 'bookings.update' }}">edit</a></td>
-        </tr>
-      {{ /each }}
-    </tbody>
-  </table>
+  <article>
+    <h2>Bookings</h2>
+    <table>
+      <tbody>
+        {{ #each bookings }}
+          <tr>
+            <td>{{ description }}</td>
+            <td>{{ getUsername user }}</td>
+            <td>{{ formatDate timeRange.from }}</td>
+            <td>{{ formatDate timeRange.to }}</td>
+            <td><a href="{{ pathFor 'bookings.update' }}">edit</a></td>
+          </tr>
+        {{ /each }}
+      </tbody>
+    </table>
+  </article>
 </template>
