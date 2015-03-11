@@ -1,6 +1,8 @@
 .lightbox {
-  overflow: hidden;
+  display: none;
   position: absolute;
+  justify-content: center;
+  align-items: center;
   z-index: 100;
   opacity: 0;
   left: 0;
@@ -16,19 +18,15 @@
 }
 
 .lightbox__wrapper {
-  position: absolute;
-  z-index: 101;
   width: 40vw;
   min-width: 200px;
-  min-height: 400px;
-  left: 30vw;
-  top: 50%;
   padding: 2rem;
   margin-top: -200px;
   background-color: hsl(0, 0%, 100%);
 }
 
 .lightbox__background {
+  z-index: -1;
   position: absolute;
   left: 0;
   top: 0;

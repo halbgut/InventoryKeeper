@@ -25,12 +25,20 @@ Lightbox = {
 , open: function () {
     var self = this
     if(self.element.className.indexOf(self.config.openClass) > -1) return
-    self.element.className += ' ' + self.config.openClass
+    self.element.style.display = 'flex'
+    setTimeout(function () {
+      if(self.element.className.indexOf(self.config.openClass) > -1) return
+      self.element.className += ' ' + self.config.openClass
+    }, 100)
   }
+
 , close: function () {
     var self = this
     if(self.element.className.indexOf(self.config.openClass) < 0) return
     self.element.className = self.element.className.replace(' ' + self.config.openClass, '')
+    setTimeout(function () {
+      self.element.style.display = 'none'
+    }, 200)
   }
 }
 
