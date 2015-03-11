@@ -23,15 +23,18 @@
 }
 
 .graphicTimesheet__item {
+  opacity: .6;
   position: absolute;
   overflow: hidden;
   height: 100%;
   left: 0;
   top: 0;
   background-color: hsl(0, 0%, 30%);
+  transition: all .2s;
 }
 
 .graphicTimesheet__item:hover {
+  opacity: 1;
   overflow: visible;
   z-index: 2;
 }
