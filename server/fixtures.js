@@ -1,7 +1,7 @@
 if(Objects.find({}).count() < 1) {
 
   Humans.insert({
-    name: 'superman'
+    givenName: 'superman'
   })
 
   Objects.insert({

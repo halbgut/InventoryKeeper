@@ -1,0 +1,20 @@
+<template name="humansList">
+  <article>
+    <h2>Humans</h2>
+    <table>
+      <tbody>
+        {{ #each humans }}
+          <tr>
+            <td>{{ givenName }}</td>
+            <td>
+              <a href="#{{ getEditURL }}">edit</a>
+              {{ #lightbox name=getEditURL }}
+                {{ > humansUpdate  }}
+              {{ /lightbox }}
+            </td>
+          </tr>
+        {{ /each }}
+      </tbody>
+    </table>
+  </article>
+</template>

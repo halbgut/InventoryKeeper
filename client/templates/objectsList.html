@@ -1,4 +1,4 @@
-<template name="listObjects">
+<template name="objectsList">
   <article>
     <h2>Objects</h2>
     <table>
@@ -8,7 +8,12 @@
             <td>{{ name }}</td>
             <td>{{ objectType }}</td>
             <td>{{ serialNo }}</td>
-            <td><a href="{{ pathFor 'objectsUpdate' }}">edit</a></td>
+            <td>
+              <a href="#{{ getEditURL }}">edit</a>
+              {{ #lightbox name=getEditURL }}
+                {{ > objectsUpdate  }}
+              {{ /lightbox }}
+            </td>
           </tr>
         {{ /each }}
       </tbody>

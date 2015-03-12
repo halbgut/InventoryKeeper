@@ -1,4 +1,4 @@
-<template name="listBookings">
+<template name="bookingsList">
   <article>
     <h2>Bookings</h2>
     <table>
@@ -9,7 +9,12 @@
             <td>{{ getHumansName human }}</td>
             <td>{{ formatDate timeRange.from }}</td>
             <td>{{ formatDate timeRange.to }}</td>
-            <td><a href="{{ pathFor 'bookingsUpdate' }}">edit</a></td>
+            <td>
+              <a href="#{{ getEditURL }}">edit</a>
+              {{ #lightbox name=getEditURL }}
+                {{ > bookingsUpdate  }}
+              {{ /lightbox }}
+            </td>
           </tr>
         {{ /each }}
       </tbody>
