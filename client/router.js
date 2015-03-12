@@ -3,10 +3,7 @@ Router.route('/', {
 , waitOn: function () {
     return [Meteor.subscribe('allObjects'), Meteor.subscribe('allCurrentBookings'), Meteor.subscribe('allUsers'), Meteor.subscribe('allHumans')]
   }
-, action: function () {
-    var self = this
-    self.render('pageTimesheet')
-  }
+, template: 'pageTimesheet'
 , data: {
     objects: Objects.find()
   , bookings: Bookings.find()
@@ -15,7 +12,7 @@ Router.route('/', {
 })
 
 Router.route('/objects/:_id/update', {
-  name: 'objects.update'
+  name: 'objectsUpdate'
 , waitOn: function () {
     return Meteor.subscribe('allObjects')
   }
@@ -27,16 +24,14 @@ Router.route('/objects/:_id/update', {
       self.next()
     }
   }
-, action: function () {
-    var self = this
-    self.render('blockObjectsUpdate', {data: {
-          doc: Objects.findOne({_id: this.params._id})
-        }})
+, template: 'objectsUpdate'
+, data: function () {
+    return Objects.findOne({_id: this.params._id})
   }
 })
 
 Router.route('/bookings/:_id/update', {
-  name: 'bookings.update'
+  name: 'bookingsUpdate'
 , waitOn: function () {
     return Meteor.subscribe('allCurrentBookings')
   }
@@ -48,10 +43,8 @@ Router.route('/bookings/:_id/update', {
       self.next()
     }
   }
-, action: function () {
-    var self = this
-    self.render('blockBookingsUpdate', {data: {
-      doc: Bookings.findOne({_id: this.params._id})
-    }})
+, template: 'bookingsUpdate'
+, data: function () {
+    return Bookings.findOne({_id: this.params._id})
   }
 })
