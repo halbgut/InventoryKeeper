@@ -8,12 +8,14 @@
             <td>{{ name }}</td>
             <td>{{ objectType }}</td>
             <td>{{ serialNo }}</td>
-            <td>
-              <a href="#{{ getEditURL }}">edit</a>
-              {{ #lightbox name=getEditURL }}
-                {{ > objectsUpdate  }}
-              {{ /lightbox }}
-            </td>
+            {{ #if currentUser }}
+              <td>
+                <a href="#{{ getEditURL }}">edit</a>
+                {{ #lightbox name=getEditURL }}
+                  {{ > objectsUpdate  }}
+                {{ /lightbox }}
+              </td>
+            {{ /if }}
           </tr>
         {{ /each }}
       </tbody>

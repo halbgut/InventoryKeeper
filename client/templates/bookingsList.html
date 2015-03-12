@@ -9,12 +9,14 @@
             <td>{{ getHumansName human }}</td>
             <td>{{ formatDate timeRange.from }}</td>
             <td>{{ formatDate timeRange.to }}</td>
-            <td>
-              <a href="#{{ getEditURL }}">edit</a>
-              {{ #lightbox name=getEditURL }}
-                {{ > bookingsUpdate  }}
-              {{ /lightbox }}
-            </td>
+            {{ #if currentUser }}
+              <td>
+                <a href="#{{ getEditURL }}">edit</a>
+                {{ #lightbox name=getEditURL }}
+                  {{ > bookingsUpdate  }}
+                {{ /lightbox }}
+              </td>
+            {{ /if }}
           </tr>
         {{ /each }}
       </tbody>

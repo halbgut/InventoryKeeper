@@ -6,12 +6,14 @@
         {{ #each humans }}
           <tr>
             <td>{{ givenName }}</td>
-            <td>
-              <a href="#{{ getEditURL }}">edit</a>
-              {{ #lightbox name=getEditURL }}
-                {{ > humansUpdate  }}
-              {{ /lightbox }}
-            </td>
+            {{ #if currentUser }}
+              <td>
+                <a href="#{{ getEditURL }}">edit</a>
+                {{ #lightbox name=getEditURL }}
+                  {{ > humansUpdate  }}
+                {{ /lightbox }}
+              </td>
+            {{ /if }}
           </tr>
         {{ /each }}
       </tbody>
