@@ -1,4 +1,4 @@
-Template.blockListBookings.helpers({
+Template.listBookings.helpers({
   formatDate: function (dateObject) {
     return dateObject.getHours() + ':' + dateObject.getMinutes() + ' – ' + dateObject.getDate() + '.' + dateObject.getMonth() + ' ' + dateObject.getFullYear()
   }

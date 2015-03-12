@@ -1,4 +1,4 @@
-Template.blockLogin.events({
+Template.userLogin.events({
   'click .login__submit': function () {
     var username = document.querySelector('.login__username').value
   , password = document.querySelector('.login__password').value
