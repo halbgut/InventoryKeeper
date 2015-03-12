@@ -38,7 +38,7 @@ if(Objects.find({}).count() < 1) {
   })
 
   Bookings.insert({
-    user: Humans.findOne({})._id
+    human: Humans.findOne({})._id
   , description: 'Engadiner Ski Marathon'
   , timeRange: {
       from: new Date(new Date().getTime() + 10000000)
@@ -49,7 +49,7 @@ if(Objects.find({}).count() < 1) {
     ]
   })
   Bookings.insert({
-    user: Humans.findOne({})._id
+    human: Humans.findOne({})._id
   , description: 'Some Event'
   , timeRange: {
       from: new Date(new Date().getTime() + 40000000)
@@ -61,7 +61,7 @@ if(Objects.find({}).count() < 1) {
     ]
   })
   Bookings.insert({
-    user: Humans.findOne({})._id
+    human: Humans.findOne({})._id
   , description: 'Another Event'
   , timeRange: {
       from: new Date(new Date().getTime() + 15000000)
