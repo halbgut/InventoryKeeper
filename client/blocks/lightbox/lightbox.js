@@ -1,4 +1,8 @@
-Lightbox = {
+lightbox = {
+  boxes: {}
+}
+
+lightbox.Lightbox = {
   config: {
     openClass: 'lightbox--js--open'
   }
@@ -16,7 +20,7 @@ Lightbox = {
 , checkRoute: function () {
     var self = this
   , hashSplit = location.href.split('#')
-    if(hashSplit[1] && hashSplit[1].indexOf(self.route) > -1) {
+    if(hashSplit[1] == self.name) {
       self.open()
     } else {
       self.close()
@@ -44,8 +48,8 @@ Lightbox = {
 
 Template.lightbox.rendered = function () {
   var self = this
-  thisLightbox = Object.create(Lightbox)
-  thisLightbox.element = this.firstNode
-  thisLightbox.route = self.data.route
-  thisLightbox.init()
+  lightbox.boxes[self.data.name] = Object.create(lightbox.Lightbox)
+  lightbox.boxes[self.data.name].name = self.data.name
+  lightbox.boxes[self.data.name].element = this.firstNode
+  lightbox.boxes[self.data.name].init()
 }

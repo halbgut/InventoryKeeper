@@ -14,25 +14,6 @@ Router.route('/', {
   }
 })
 
-Router.route('/objects/new', {
-  name: 'objects.new'
-, waitOn: function () {
-    return Meteor.subscribe('allObjects')
-  }
-, onBeforeAction: function () {
-    var self = this
-    if(!Meteor.userId()) {
-      self.render('blockNotAllowed')
-    } else {
-      self.next()
-    }
-  }
-, action: function () {
-    var self = this
-    self.render('blockObjectsNew')
-  }
-})
-
 Router.route('/objects/:_id/update', {
   name: 'objects.update'
 , waitOn: function () {
@@ -54,25 +35,6 @@ Router.route('/objects/:_id/update', {
   }
 })
 
-Router.route('/bookings/new', {
-  name: 'bookings.new'
-, waitOn: function () {
-    return [Meteor.subscribe('allObjects'), Meteor.subscribe('allUsers')]
-  }
-, onBeforeAction: function () {
-    var self = this
-    if(!Meteor.userId()) {
-      self.render('blockNotAllowed')
-    } else {
-      self.next()
-    }
-  }
-, action: function () {
-    var self = this
-    self.render('blockBookingsNew')
-  }
-})
-
 Router.route('/bookings/:_id/update', {
   name: 'bookings.update'
 , waitOn: function () {
@@ -91,13 +53,5 @@ Router.route('/bookings/:_id/update', {
     self.render('blockBookingsUpdate', {data: {
       doc: Bookings.findOne({_id: this.params._id})
     }})
-  }
-})
-
-Router.route('/login', {
-  name: 'user.login'
-, action: function () {
-    var self = this
-    self.render('blockLogin')
   }
 })
