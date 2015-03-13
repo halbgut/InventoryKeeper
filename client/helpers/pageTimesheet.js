@@ -6,7 +6,7 @@ function getFormatedBookings () {
       returnVal.push({
         rowId: thing
       , rowLabel: Objects.findOne({_id: thing}).serialNo
-      , description: booking.description + ' - ' + Humans.findOne({_id: booking.human}).givenName
+      , description: booking.description + ' - <i>' + Humans.findOne({_id: booking.human}).givenName + '</i>'
       , fromUnixTime: new Date(booking.timeRange.from).getTime()
       , toUnixTime: new Date(booking.timeRange.to).getTime()
       , color: booking.color

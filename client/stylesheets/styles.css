@@ -1,5 +1,5 @@
 body {
-  font-family: Futura;
+  font-family: Bitter;
 }
 
 td {
@@ -18,4 +18,8 @@ article {
 
 label {
   font-weight: 800;
+}
+
+i {
+  font-style: italic;
 }
