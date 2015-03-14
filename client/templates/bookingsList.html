@@ -12,9 +12,9 @@
             {{ #if currentUser }}
               <td>
                 <a href="#{{ getEditURL }}">edit</a>
-                {{ #lightbox name=getEditURL }}
+                {{ #kriegslustigLightbox name=getEditURL }}
                   {{ > bookingsUpdate  }}
-                {{ /lightbox }}
+                {{ /kriegslustigLightbox }}
               </td>
             {{ /if }}
           </tr>

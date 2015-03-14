@@ -11,9 +11,9 @@
             {{ #if currentUser }}
               <td>
                 <a href="#{{ getEditURL }}">edit</a>
-                {{ #lightbox name=getEditURL }}
+                {{ #kriegslustigLightbox name=getEditURL }}
                   {{ > objectsUpdate  }}
-                {{ /lightbox }}
+                {{ /kriegslustigLightbox }}
               </td>
             {{ /if }}
           </tr>
