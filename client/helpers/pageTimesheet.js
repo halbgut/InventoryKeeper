@@ -30,6 +30,11 @@ Template.pageTimesheet.rendered = function () {
   thisGraphicTimesheet = Object.create(graphicTimesheet)
   thisGraphicTimesheet.getItems = getFormatedBookings
   thisGraphicTimesheet.init('.graphicTimesheet', getFormatedBookings())
+  _.each(kriegslustigLightbox.boxes, function (box) {
+    box.element.addEventListener('open', function () {
+      box.element.querySelector('input').focus()
+    })
+  })
 }
 
 Template.pageTimesheet.helpers({
