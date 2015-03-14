@@ -11,3 +11,5 @@ iron:router
 accounts-password
 kriegslustig:lightbox
 msavin:mongol
+cfs:standard-packages
+yogiben:autoform-file
