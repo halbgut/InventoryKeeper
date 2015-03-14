@@ -1,26 +1,38 @@
 Objects.allow({
-  insert: function () {
-    return !!Meteor.user()
+  insert: function (userId) {
+    return !!userId
   }
-, update: function () {
-    return !!Meteor.user()
+, update: function (userId) {
+    return !!userId
   }
 })
 
 Bookings.allow({
-  insert: function () {
-    return !!Meteor.user()
+  insert: function (userId) {
+    return !!userId
   }
-, update: function () {
-    return !!Meteor.user()
+, update: function (userId) {
+    return !!userId
   }
 })
 
 Humans.allow({
-  insert: function () {
-    return !!Meteor.user()
+  insert: function (userId) {
+    return !!userId
   }
-, update: function () {
-    return !!Meteor.user()
+, update: function (userId) {
+    return !!userId
+  }
+})
+
+Pictures.allow({
+  insert: function (userId) {
+    return !!userId
+  }
+, update: function(userId) {
+    return !!userId
+  }
+, download: function () {
+    return true
   }
 })
