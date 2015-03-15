@@ -64,16 +64,28 @@
   padding: 5px;
 }
 
+.graphicTimesheet__rowTitle:hover:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 20px;
+  height: 20px;
+  right: -30px;
+  bottom: 20px;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 8px -4px hsl(0, 0%, 0%);
+  background-color: hsl(0, 0%, 100%);
+}
+
 .graphicTimesheet__rowImage {
   position: absolute;
   opacity: 0;
   width: 0;
-  right: -105px;
+  right: -125px;
   top: -80px;
   height: 105px;
   padding: 0;
   background-color: hsl(0, 0%, 100%);
-  box-shadow: 0 0 8px -4px hsl(0, 0%, 0%);
 }
 
 .graphicTimesheet__item {
