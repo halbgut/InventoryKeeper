@@ -56,7 +56,7 @@ graphicTimesheet = {
     element.id = 'graphicTimesheet__row--' + rowId
     element.style.width = self.conversionRate * (self.config.maxTime - self.config.minTime) + 'px'
     if(rowImageURL) {
-      imageElement.className = 'graphicTimeSheet__rowImage'
+      imageElement.className = 'graphicTimesheet__rowImage'
       imageElement.src = rowImageURL
       titleElement.appendChild(imageElement)
     }
