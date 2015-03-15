@@ -31,27 +31,35 @@ graphicTimesheet = {
         }, {
           id: item.rowId
         , label: item.rowLabel
+        , imageURL: item.rowImageURL ? item.rowImageURL : false
         })
       })
     })
   }
 , clearRows: function () {
     var self = this
+    self.titleWrapper.innerHTML = ''
     _.each(self.rows, function (item, key) {
       self.rowContainer.removeChild(item)
     })
     self.rows = {}
   }
-, rowTemplate: function (rowId, rowName) {
+, rowTemplate: function (rowId, rowName, rowImageURL) {
     var self = this
   , element = document.createElement('div')
   , titleElement = document.createElement('h3')
+  , imageElement = document.createElement('img')
     titleElement.innerHTML = rowName
     self.titleWrapper.appendChild(titleElement)
     titleElement.className = 'graphicTimesheet__rowTitle'
     element.className = 'graphicTimesheet__row'
     element.id = 'graphicTimesheet__row--' + rowId
     element.style.width = self.conversionRate * (self.config.maxTime - self.config.minTime) + 'px'
+    if(rowImageURL) {
+      imageElement.className = 'graphicTimeSheet__rowImage'
+      imageElement.src = rowImageURL
+      titleElement.appendChild(imageElement)
+    }
     return element
   }
 , itemTemplate: function (description) {
@@ -82,7 +90,7 @@ graphicTimesheet = {
 , addRow: function (row) {
     var self = this
     row.label = row.label || row.id
-    self.rows[row.id] = self.rowTemplate(row.id, row.label, row.color)
+    self.rows[row.id] = self.rowTemplate(row.id, row.label, row.imageURL)
     self.rowContainer.appendChild(self.rows[row.id])
   }
 , createTimeRuler: function () {

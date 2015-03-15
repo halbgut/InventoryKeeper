@@ -3,9 +3,11 @@ function getFormatedBookings () {
   _formatedBookingsDep.depend()
   Bookings.find({}).forEach(function (booking) {
     _.each(booking.objects, function (thing) {
+      var thingDict = Objects.findOne({_id: thing})
       returnVal.push({
         rowId: thing
-      , rowLabel: Objects.findOne({_id: thing}).serialNo
+      , rowLabel: thingDict.serialNo
+      , rowImageURL: thingDict.picture ? Pictures.findOne({_id: thingDict.picture}).url({stores: 'Thumbs'}) : false
       , description: booking.description + ' - <i>' + Humans.findOne({_id: booking.human}).givenName + '</i>'
       , fromUnixTime: new Date(booking.timeRange.from).getTime()
       , toUnixTime: new Date(booking.timeRange.to).getTime()
