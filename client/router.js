@@ -8,5 +8,11 @@ Router.route('/', {
     objects: Objects.find()
   , bookings: Bookings.find()
   , humans: Humans.find()
+  , pictures: Pictures.find()
+  }
+, onBeforeAction: function () {
+    var self = this
+    Meteor.subscribe('allPictures')
+    self.next()
   }
 })

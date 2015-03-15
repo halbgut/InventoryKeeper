@@ -16,3 +16,7 @@ Meteor.publish('allUsers', function () {
 Meteor.publish('allHumans', function () {
   return Humans.find()
 })
+
+Meteor.publish('allPictures', function () {
+  return Pictures.find()
+})
