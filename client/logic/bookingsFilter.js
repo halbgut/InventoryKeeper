@@ -1,2 +1,2 @@
-bookingsFilter = Object.create(Filter)
+bookingsFilter = Object.create(KriegslustigFilter)
 bookingsFilter.collection = Bookings
