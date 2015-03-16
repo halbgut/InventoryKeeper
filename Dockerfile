@@ -37,7 +37,7 @@ ADD ./.demeteorized /var/app
 WORKDIR /var/app
 
 # This environment-variable is required to be set by demeteorizer.
-ENV ROOT_URL='http://inventorykeeper.kriegslustig.me'
+ENV ROOT_URL='http://inventory-keeper.kriegslustig.me'
 # This is also required and sets the port the app will be running on (inside the container).
 ENV PORT=80
 
