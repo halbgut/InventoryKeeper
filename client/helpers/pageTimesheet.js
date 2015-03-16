@@ -1,7 +1,7 @@
 function getFormatedBookings () {
   var returnVal = []
   _formatedBookingsDep.depend()
-  Bookings.find({}).forEach(function (booking) {
+  bookingsFilter.getItems().forEach(function (booking) {
     _.each(booking.objects, function (thing) {
       var thingDict = Objects.findOne({_id: thing})
       returnVal.push({
@@ -19,6 +19,7 @@ function getFormatedBookings () {
 }
 
 Template.pageTimesheet.created = function () {
+  bookingsFilter.updateItems()
   _formatedBookingsDep = new Tracker.Dependency()
   Bookings.find().observe({
     added: function () {

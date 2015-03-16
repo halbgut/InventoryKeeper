@@ -4,7 +4,8 @@
     <table>
       <tbody>
         {{ #each humans }}
-          <tr>
+          <tr id="{{ _id }}">
+            <td><input type="checkbox"></td>
             <td>{{ givenName }}</td>
             {{ #if currentUser }}
               <td>
