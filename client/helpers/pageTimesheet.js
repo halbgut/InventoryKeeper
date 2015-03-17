@@ -1,6 +1,5 @@
 function getFormatedBookings () {
   var returnVal = []
-  _formatedBookingsDep.depend()
   bookingsFilter.getItems().forEach(function (booking) {
     _.each(booking.objects, function (thing) {
       var thingDict = Objects.findOne({_id: thing})
@@ -19,13 +18,7 @@ function getFormatedBookings () {
 }
 
 Template.pageTimesheet.created = function () {
-  bookingsFilter.updateItems()
-  _formatedBookingsDep = new Tracker.Dependency()
-  Bookings.find().observe({
-    added: function () {
-      _formatedBookingsDep.changed()
-    }
-  })
+  bookingsFilter.init()
 }
 
 Template.pageTimesheet.rendered = function () {
@@ -42,7 +35,4 @@ Template.pageTimesheet.rendered = function () {
 
 Template.pageTimesheet.helpers({
   getFormatedBookings: getFormatedBookings
-, formatedBookingsDep: function () {
-    return _formatedBookingsDep
-  }
 })
