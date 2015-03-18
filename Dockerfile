@@ -23,6 +23,7 @@ MAINTAINER Kriegslustig
 #     It is required to install npm (Node Package Manager) which includes nodejs
 #   make
 #     Some node modules require to be built on the Machine it will be running on
+RUN yum update
 RUN yum install -y epel-release make imagemagick
 RUN yum install -y npm
 
