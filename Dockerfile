@@ -24,8 +24,8 @@ MAINTAINER Kriegslustig
 #   make
 #     Some node modules require to be built on the Machine it will be running on
 RUN yum update
-RUN yum install -y epel-release make imagemagick
-RUN yum install -y npm
+RUN yum install -y gcc gcc-c++ make tar imagemagick
+RUN curl http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz | tar xz && cd node-v0.12.0 && ./configure && make && make install
 
 # ADD
 #   This COPIES  everything from the `.demeteorizer` directory to `/var/app` inside the container
