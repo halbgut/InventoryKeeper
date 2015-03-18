@@ -17,13 +17,19 @@ button:focus,
 .neatButton:focus,
 input[type=submit]:hover,
 button:hover,
-.neatButton:hover {
+.neatButton:hover,
+input[type=submit]:active,
+button:active,
+.neatButton:active {
   background-color: hsl(0, 0%, 80%);
 }
 
 input[type=submit]:focus,
 button:focus,
-.neatButton:focus {
+.neatButton:focus,
+input[type=submit]:active,
+button:active,
+.neatButton:active {
   outline: 0;
   text-decoration: underline;
   border: 1px solid hsl(0, 0%, 0%);

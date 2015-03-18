@@ -18,16 +18,22 @@
 
 .graphicTimesheet__zoom {
   position: absolute;
-  display: block;
+  display: inline-block;
   z-index: 3;
+  padding: 0;
   height: 40px;
   width: 40px;
   left: 0;
   top: 0;
+  line-height: 20px;
+}
+
+.graphicTimesheet__zoom:hover {
+  cursor: pointer;
 }
 
 .graphicTimesheet__zoom--out {
-  left: 40px;
+  left: 88px;
 }
 
 .graphicTimesheet__rowContainer {
