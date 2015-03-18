@@ -18,8 +18,12 @@ graphicTimesheet = {
     self.element.querySelector('.graphicTimesheet__header').style.width = self.conversionRate * (self.config.maxTime - self.config.minTime) + 'px'
     self.element.querySelector('.graphicTimesheet__time--from').innerHTML = new Date(self.config.minTime)
     self.element.querySelector('.graphicTimesheet__time--to').innerHTML = new Date(self.config.maxTime)
+    self.addEventListeners()
     self.createTimeRuler()
-    Tracker.autorun(function () {
+    Tracker.autorun(function (comp) {
+      self.invalidateComp = function () {
+        comp.invalidate()
+      }
       self.items = self.getItems()
       self.clearRows()
       _.each(self.items, function (item) {
@@ -34,6 +38,15 @@ graphicTimesheet = {
         , imageURL: item.rowImageURL ? item.rowImageURL : false
         })
       })
+    })
+  }
+, addEventListeners: function () {
+    var self = this
+    self.element.querySelector('.graphicTimesheet__zoom--in').addEventListener('click', function () {
+      self.zoom(0.000001)
+    })
+    self.element.querySelector('.graphicTimesheet__zoom--out').addEventListener('click', function () {
+      self.zoom(-0.000001)
     })
   }
 , clearRows: function () {
@@ -98,13 +111,17 @@ graphicTimesheet = {
     var self = this
   , hoursInRange = self.convertUnixToHours(self.config.maxTime - self.config.minTime)
   , rowWidth = self.conversionRate * (self.config.maxTime - self.config.minTime)
+  , daysElement = document.getElementById('graphicTimesheet__row--days')
+  , hoursElement = document.getElementById('graphicTimesheet__row--hours')
 
+    daysElement ? self.rowContainer.removeChild(daysElement) : ''
+    hoursElement ? self.rowContainer.removeChild(hoursElement) : ''
     dayRow = self.rowTemplate('days', '')
     dayRow.appendChild(self.createDayRuler(hoursInRange / 24))
-    self.rowContainer.appendChild(dayRow)
     hourRow = self.rowTemplate('hours', '')
     hourRow.appendChild(self.createHourRuler(hoursInRange))
-    self.rowContainer.appendChild(hourRow)
+    self.rowContainer.insertBefore(hourRow, self.rowContainer.children[1])
+    self.rowContainer.insertBefore(dayRow, self.rowContainer.children[1])
   }
 , calcCurrHourDiff: function () {
     var self = this
@@ -166,5 +183,11 @@ graphicTimesheet = {
     label.className = 'graphicTimesheet__markerText graphicTimesheet__markerText--day'
     day.appendChild(label)
     return day
+  }
+, zoom: function (by) {
+    var self = this
+    self.conversionRate += by
+    self.createTimeRuler()
+    self.invalidateComp()
   }
 }

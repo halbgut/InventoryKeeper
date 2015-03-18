@@ -16,6 +16,20 @@
   box-shadow: 0 0 8px -4px hsl(0, 0%, 0%);
 }
 
+.graphicTimesheet__zoom {
+  position: absolute;
+  display: block;
+  z-index: 3;
+  height: 40px;
+  width: 40px;
+  left: 0;
+  top: 0;
+}
+
+.graphicTimesheet__zoom--out {
+  left: 40px;
+}
+
 .graphicTimesheet__rowContainer {
   height: 100%;
   width: auto;
