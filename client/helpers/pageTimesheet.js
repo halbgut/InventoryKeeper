@@ -18,7 +18,12 @@ function getFormatedBookings () {
 }
 
 Template.pageTimesheet.created = function () {
-  bookingsFilter.init()
+  var self = this
+  self.subscribe('allObjects')
+  self.subscribe('allCurrentBookings')
+  self.subscribe('allUsers')
+  self.subscribe('allHumans')
+  self.subscribe('allPictures')
 }
 
 Template.pageTimesheet.rendered = function () {
